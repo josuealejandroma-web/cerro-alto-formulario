@@ -1,61 +1,121 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="es">
 <head>
-<meta charset="utf-8">
-<title>Clinica Dental Cerro Alto</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#174c45">
+  <meta name="description" content="Consulta por los servicios de Clínica Dental Cerro Alto en Quito. Recepción te ayudará a dar el siguiente paso.">
+  <title>Conversemos · Clínica Dental Cerro Alto</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="contenedor">
-  <div class="cabecera">
-    <div class="logo">CLINICA DENTAL CERRO ALTO</div>
-    <div class="menu">INICIO | SERVICIOS | SEDES | NOSOTROS | CONTACTO</div>
-  </div>
+  <a class="skip-link" href="#consulta">Ir al formulario de contacto</a>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Clínica Dental Cerro Alto, inicio">
+      <svg class="brand-symbol" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 31V19a14 14 0 0 1 28 0v12M13 31V20a7 7 0 0 1 14 0v11M20 5v6M6 31h28"/></svg>
+      <span>Cerro Alto<small>CLÍNICA DENTAL</small></span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a class="locations-link" href="#sedes">Nuestras sedes</a>
+      <a class="header-phone" href="tel:+59320004400"><span aria-hidden="true">↗</span> Llamar a recepción</a>
+    </nav>
+  </header>
 
-  <div class="banner">
-    <div class="banner-texto">TU SONRISA ES NUESTRA PRIORIDAD!!!</div>
-    <div class="banner-sub">Mas de 15 años cuidando la salud dental de las familias quiteñas con la mejor tecnologia y los mejores profesionales del pais</div>
-  </div>
+  <main id="inicio" class="page-layout">
+    <div class="introduction">
+      <p class="eyebrow"><span aria-hidden="true"></span> QUITO · NORTE Y VALLE</p>
+      <h1>Tu próxima sonrisa<br>empieza con una<br> <em>conversación.</em></h1>
+      <p class="intro-copy">Cuéntanos qué necesitas. Nuestro equipo de recepción te ayudará con información y los siguientes pasos.</p>
+      <a class="mobile-form-link" href="#consulta">Escribir mi consulta <span aria-hidden="true">↓</span></a>
+      <div class="next-steps" aria-labelledby="next-title">
+        <h2 id="next-title">¿Qué pasa después?</h2>
+        <ol>
+          <li><span class="step-number" aria-hidden="true">01</span><span>Revisamos tu consulta.</span></li>
+          <li><span class="step-number" aria-hidden="true">02</span><span>Recepción te contacta para ayudarte.</span></li>
+          <li><span class="step-number" aria-hidden="true">03</span><span>Si buscas una cita, acordamos la disponibilidad contigo.</span></li>
+        </ol>
+        <p class="response-note">Atención humana: lun–vie, 08:00–18:00; sáb, 09:00–13:00. Fuera de este horario, desde la próxima apertura. Domingos y feriados no atendemos. Hora de Quito.</p>
+      </div>
+      <p class="care-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Z"/><path d="m8 12 3 3 5-6"/></svg><span>Solo usaremos tus datos para atender esta consulta.</span></p>
+    </div>
 
-  <div class="columnas">
-    <div class="col-izq">
-      <div class="titulo">Contactenos</div>
-      <p class="texto">Llene el siguiente formulario y nos pondremos en contacto.</p>
-
-      <form id="formulario">
-        <input type="text" id="nombre" placeholder="Nombre">
-        <input type="text" id="telefono" placeholder="Telefono">
-        <input type="text" id="correo" placeholder="Email">
-        <input type="text" id="ciudad" placeholder="Ciudad">
-        <select id="servicio">
-          <option>Seleccione...</option>
-          <option>Blanqueamiento</option>
-          <option>Combo limpieza + blanqueamiento</option>
-          <option>Limpieza</option>
-          <option>Valoración</option>
-          <option>Ortodoncia</option>
-          <option>Alineadores</option>
-          <option>Otro</option>
-        </select>
-        <textarea id="mensaje" placeholder="Mensaje"></textarea>
-        <div class="boton" onclick="enviar()">ENVIAR</div>
+    <section class="form-card" id="consulta" aria-labelledby="form-title">
+      <div class="form-heading"><p class="eyebrow">ESTAMOS PARA AYUDARTE</p><h2 id="form-title">Conversemos</h2><p>Los campos con <span class="required-mark" aria-hidden="true">*</span> son obligatorios.</p></div>
+      <noscript><p class="notice notice-error">Activa JavaScript para validar y enviar el formulario. También puedes llamar a recepción al +593 2 000 4400.</p></noscript>
+      <div class="error-summary notice notice-error" id="error-summary" role="alert" tabindex="-1" hidden><h3>Revisa estos datos para continuar</h3><ul id="error-list"></ul></div>
+      <div class="submission-status notice" id="submission-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></div>
+      <form id="formulario" novalidate>
+        <fieldset id="form-fields" disabled>
+          <legend class="section-label"><span aria-hidden="true">01</span> TUS DATOS</legend>
+          <div class="field">
+            <label for="nombre">Nombre completo <span class="required-mark" aria-hidden="true">*</span></label>
+            <input id="nombre" name="full_name" type="text" autocomplete="name" required maxlength="120" aria-describedby="nombre-error" placeholder="Cómo quieres que te llamemos">
+            <p class="field-error" id="nombre-error" hidden></p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="telefono">Teléfono de contacto <span class="required-mark" aria-hidden="true">*</span></label>
+              <input id="telefono" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="32" aria-describedby="telefono-help telefono-error" placeholder="099 123 4567">
+              <p class="field-help" id="telefono-help">Ecuador: 09… u 02… Fuera de Ecuador, incluye + y código de país.</p>
+              <p class="field-error" id="telefono-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="correo">Correo electrónico <span class="optional">opcional</span></label>
+              <input id="correo" name="email" type="email" inputmode="email" autocomplete="email" maxlength="254" aria-describedby="correo-error" placeholder="tu@correo.com" autocapitalize="none" spellcheck="false">
+              <p class="field-error" id="correo-error" hidden></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="ciudad">Ciudad <span class="required-mark" aria-hidden="true">*</span></label>
+            <input id="ciudad" name="city" type="text" autocomplete="address-level2" required maxlength="80" aria-describedby="ciudad-help ciudad-error" placeholder="Por ejemplo, Quito">
+            <p class="field-help" id="ciudad-help">Recibimos pacientes de cualquier ciudad. La atención es presencial en Quito.</p>
+            <p class="field-error" id="ciudad-error" hidden></p>
+          </div>
+        </fieldset>
+        <fieldset id="consultation-fields" disabled>
+          <legend class="section-label"><span aria-hidden="true">02</span> TU CONSULTA</legend>
+          <div class="field">
+            <label for="servicio">¿Qué servicio te interesa? <span class="required-mark" aria-hidden="true">*</span></label>
+            <select id="servicio" name="service_interest" required aria-describedby="servicio-error">
+              <option value="">Selecciona un servicio</option>
+              <option value="Valoración">Valoración</option>
+              <option value="Limpieza">Limpieza</option>
+              <option value="Blanqueamiento">Blanqueamiento</option>
+              <option value="Combo limpieza + blanqueamiento">Combo limpieza + blanqueamiento</option>
+              <option value="Ortodoncia">Ortodoncia</option>
+              <option value="Alineadores">Alineadores</option>
+              <option value="Otro">Otro / necesito orientación</option>
+            </select>
+            <p class="field-error" id="servicio-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="mensaje">¿Qué te gustaría saber? <span class="optional">opcional</span></label>
+            <textarea id="mensaje" name="message" maxlength="1000" rows="3" aria-describedby="mensaje-help mensaje-error" placeholder="Por ejemplo: quisiera conocer el precio de una limpieza."></textarea>
+            <div class="message-meta"><p class="field-help" id="mensaje-help">Evita enviar cédulas, datos de tarjetas o historia clínica.</p><span id="message-count" aria-hidden="true">0/1000</span></div>
+            <p class="field-error" id="mensaje-error" hidden></p>
+          </div>
+          <div class="consent-field">
+            <input id="consentimiento" name="consent" type="checkbox" required aria-describedby="privacy-details consentimiento-error">
+            <label for="consentimiento">Autorizo a Clínica Dental Cerro Alto a usar estos datos para gestionar mi consulta y contactarme. <span class="required-mark" aria-hidden="true">*</span></label>
+          </div>
+          <p class="privacy-details" id="privacy-details">Sin publicidad ni cesión a aliados. Puedes retirar tu autorización escribiendo a <a href="mailto:hola@cerroalto-dental.example">hola@cerroalto-dental.example</a>.</p>
+          <p class="field-error" id="consentimiento-error" hidden></p>
+          <p class="demo-notice" id="demo-notice" hidden><span aria-hidden="true">○</span> Vista de prueba: tus datos no se enviarán.</p>
+          <button class="submit-button" id="submit-button" type="submit"><span id="submit-label">Enviar mi consulta</span><span id="submit-arrow" aria-hidden="true">↗</span></button>
+          <p class="submit-note">Enviar esta consulta no confirma una cita. El tiempo de respuesta depende de recepción.</p>
+        </fieldset>
       </form>
-    </div>
+      <button id="new-request" class="secondary-button" type="button" hidden>Hacer otra consulta</button>
+    </section>
 
-    <div class="col-der">
-      <div class="titulo">Nuestras sedes</div>
-      <p class="texto"><b>Sede Norte:</b> Av. Las Retamas N38-150 y Calle Los Guabos, Quito. Lunes a viernes 8:00 a 19:00, sabados 8:00 a 13:00.</p>
-      <p class="texto"><b>Sede Valle:</b> C.C. Paseo Arrayanes, local 14, Via Interoceanica km 12, Cumbaya. Lunes a viernes 10:00 a 19:00, sabados 9:00 a 14:00.</p>
-      <p class="texto">Telefono: +593 2 000 4400</p>
-      <p class="texto">Aceptamos todas las tarjetas. Consulte por nuestras promociones vigentes en blanqueamiento y ortodoncia.</p>
-    </div>
-  </div>
-
-  <div class="pie">
-    Al enviar este formulario usted acepta los terminos y condiciones y la politica de tratamiento de datos de la clinica, la cual puede ser modificada sin previo aviso. La informacion proporcionada podra ser utilizada con fines comerciales y de contacto por la clinica y sus aliados. Copyright 2019 Clinica Dental Cerro Alto. Todos los derechos reservados.
-  </div>
-</div>
-<script src="config.js"></script>
-<script src="script.js"></script>
+    <section class="locations-section" id="sedes" aria-labelledby="locations-title">
+      <div class="locations-heading"><p class="eyebrow">CERCA DE TI</p><h2 id="locations-title">Dos sedes. La misma atención.</h2><p>Domingos y feriados nacionales: cerrado.</p></div>
+      <article class="location"><p class="location-number" aria-hidden="true">01 / NORTE</p><h3>Sede Norte</h3><p>Av. Las Retamas N38-150 y Calle Los Guabos, Quito.</p><dl><div><dt>Lun–vie</dt><dd>08:00–19:00</dd></div><div><dt>Sábado</dt><dd>08:00–13:00</dd></div></dl><p class="parking">Estacionamiento propio · 6 puestos</p></article>
+      <article class="location"><p class="location-number" aria-hidden="true">02 / VALLE</p><h3>Sede Valle</h3><p>C. C. Paseo Arrayanes, local 14. Vía Interoceánica km 12, Cumbayá.</p><dl><div><dt>Lun–vie</dt><dd>10:00–19:00</dd></div><div><dt>Sábado</dt><dd>09:00–14:00</dd></div></dl><p class="parking">Estacionamiento del centro comercial</p></article>
+    </section>
+  </main>
+  <footer class="site-footer"><span>Clínica Dental Cerro Alto · Quito, Ecuador</span><span>Negocio ficticio · Prueba técnica INVERS</span></footer>
+  <script src="config.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
